@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Times New Roman', Times, serif;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden;
+        }
+        .container {
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 600px;
+        }
+        h1 {
+            color: #ff69b4; /* Pink color */
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            opacity: 0;
+        }
+        p {
+            color: #ff69b4; /* Pink color */
+            font-size: 1.5rem;
+            line-height: 1.6;
+            opacity: 0;
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            p {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="mainHeading">This website is still in progress</h1>
+        <p id="subText">Come back later</p>
+    </div>
+
+    <script>
+        // Simple fade-in animation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get the elements
+            const heading = document.getElementById('mainHeading');
+            const subText = document.getElementById('subText');
+            
+            // Function to animate opacity
+            function fadeIn(element, duration) {
+                let opacity = 0;
+                const interval = 10;
+                const gap = interval / duration;
+                
+                function updateOpacity() {
+                    opacity += gap;
+                    element.style.opacity = opacity;
+                    
+                    if (opacity >= 1) {
+                        clearInterval(fadeInterval);
+                    }
+                }
+                
+                const fadeInterval = setInterval(updateOpacity, interval);
+            }
+            
+            // Animate elements with a delay between them
+            setTimeout(function() {
+                fadeIn(heading, 1500);
+                
+                setTimeout(function() {
+                    fadeIn(subText, 1500);
+                }, 500);
+            }, 300);
+        });
+    </script>
+</body>
+</html>
